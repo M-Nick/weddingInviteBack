@@ -20,7 +20,7 @@ export const initAnswerModel = async (sequelize, Question) => {
     { sequelize: sequelize }
   );
 
-  Question.Answer = Question.hasMany(Answer);
+  Question.Answer = Question.hasMany(Answer, { as: "answers" });
 
   await Answer.sync({ force: NEED_FORCE_SYNC });
 

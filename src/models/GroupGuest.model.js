@@ -7,8 +7,14 @@ export const initGroupGuestModel = async (sequelize, Group, Guest) => {
 
   GroupGuest.init(null, { sequelize });
 
-  Group.Guest = Group.belongsToMany(Guest, { through: GroupGuest });
-  Guest.Group = Guest.belongsToMany(Group, { through: GroupGuest });
+  Group.Guest = Group.belongsToMany(Guest, {
+    through: GroupGuest,
+    as: "guests",
+  });
+  Guest.Group = Guest.belongsToMany(Group, {
+    through: GroupGuest,
+    as: "groups",
+  });
 
   await GroupGuest.sync({ force: NEED_FORCE_SYNC });
 

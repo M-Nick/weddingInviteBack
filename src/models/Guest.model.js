@@ -34,7 +34,7 @@ export const initGuestModel = async (sequelize) => {
     { sequelize: sequelize }
   );
 
-  await Guest.sync({ force: NEED_FORCE_SYNC });
+  await Guest.sync({ force: NEED_FORCE_SYNC, as: "guests" });
 
   if (!NEED_SEEDS) return;
 

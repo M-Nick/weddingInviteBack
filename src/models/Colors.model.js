@@ -23,7 +23,7 @@ export const initColorModel = async (sequelize, Wedding) => {
     { sequelize }
   );
 
-  Wedding.Color = Wedding.hasMany(Color);
+  Wedding.Color = Wedding.hasMany(Color, { as: "colors" });
 
   await Color.sync({ force: NEED_FORCE_SYNC });
 

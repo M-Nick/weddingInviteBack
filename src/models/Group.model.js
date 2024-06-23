@@ -23,7 +23,7 @@ export const initGroupModel = async (sequelize, Wedding) => {
     { sequelize: sequelize }
   );
 
-  Wedding.Group = Wedding.hasMany(Group);
+  Wedding.Group = Wedding.hasMany(Group, { as: "groups" });
 
   await Group.sync({ force: NEED_FORCE_SYNC });
 

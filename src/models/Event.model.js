@@ -26,8 +26,9 @@ export const initEventModel = async (sequelize, Wedding, Location) => {
     { sequelize: sequelize }
   );
 
-  Wedding.Event = Wedding.hasMany(Event);
-  Location.Event = Location.hasMany(Event);
+  Wedding.Event = Wedding.hasMany(Event, { as: "events" });
+  Location.Event = Location.hasMany(Event, { as: "events" });
+  Event.Location = Event.belongsTo(Location, { as: "location" });
 
   await Event.sync({ force: NEED_FORCE_SYNC });
 

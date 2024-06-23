@@ -15,8 +15,14 @@ export const initGroupAnswerModel = async (sequelize, Group, Answer) => {
     { sequelize }
   );
 
-  Group.Answer = Group.belongsToMany(Answer, { through: GroupAnswer });
-  Answer.Group = Answer.belongsToMany(Group, { through: GroupAnswer });
+  Group.Answer = Group.belongsToMany(Answer, {
+    through: GroupAnswer,
+    as: "answers",
+  });
+  Answer.Group = Answer.belongsToMany(Group, {
+    through: GroupAnswer,
+    as: "groups",
+  });
 
   await GroupAnswer.sync({ force: NEED_FORCE_SYNC });
 
