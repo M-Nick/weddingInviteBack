@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
 import { initRoutes } from "./routes/routes.js";
@@ -7,6 +8,7 @@ import { initSequelize } from "./db/init.js";
   const app = express();
   const port = 3000;
 
+  app.use(cors());
   app.use(bodyParser.json());
   app.use(
     bodyParser.urlencoded({
@@ -15,9 +17,8 @@ import { initSequelize } from "./db/init.js";
   );
 
   const sequelize = await initSequelize();
-  const models = sequelize.models;
 
-  await initRoutes(app, models);
+  await initRoutes(app, sequelize.models);
 
   app.listen(port, () => {
     console.log(`App running on port ${port}.`);

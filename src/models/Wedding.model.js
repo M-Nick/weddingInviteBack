@@ -18,5 +18,5 @@ export const initWeddingModel = async (sequelize) => {
     { sequelize: sequelize }
   );
 
-  await Wedding.sync();
+  await Wedding.sync({ force: true });
 };
