@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { testController } from "./controllers/Test.controller.js";
 import { initRoutes } from "./routes/routes.js";
 import { initSequelize } from "./db/init.js";
 
