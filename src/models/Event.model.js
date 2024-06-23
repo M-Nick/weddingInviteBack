@@ -1,6 +1,8 @@
+import { faker } from "@faker-js/faker";
 import { DataTypes, Model } from "sequelize";
+import { NEED_FORCE_SYNC, NEED_SEEDS } from "../configs/models.configs.js";
 
-export const initEventModel = async (sequelize, Wedding, Place) => {
+export const initEventModel = async (sequelize, Wedding, Location) => {
   class Event extends Model {}
 
   Event.init(
@@ -10,7 +12,7 @@ export const initEventModel = async (sequelize, Wedding, Place) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      type: {
+      time: {
         type: DataTypes.DATE,
       },
       name: {
@@ -27,10 +29,10 @@ export const initEventModel = async (sequelize, Wedding, Place) => {
           key: "id",
         },
       },
-      place_id: {
+      location_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: Place,
+          model: Location,
           key: "id",
         },
       },
@@ -38,5 +40,16 @@ export const initEventModel = async (sequelize, Wedding, Place) => {
     { sequelize: sequelize }
   );
 
-  await Event.sync({ force: true });
+  await Event.sync({ force: NEED_FORCE_SYNC });
+
+  if (!NEED_SEEDS) return;
+
+  const seed = new Array(100).fill(1).map(() => ({
+    time: faker.date.anytime(),
+    name: faker.lorem.words(5),
+    description: faker.lorem.words(10),
+    wedding_id: faker.number.int({ min: 1, max: 100 }),
+  }));
+
+  seed.forEach(async (s) => await Event.create(s));
 };

@@ -1,4 +1,6 @@
+import { faker } from "@faker-js/faker";
 import { DataTypes, Model } from "sequelize";
+import { NEED_FORCE_SYNC, NEED_SEEDS } from "../configs/models.configs.js";
 
 export const initGuestModel = async (sequelize) => {
   class Guest extends Model {}
@@ -32,5 +34,16 @@ export const initGuestModel = async (sequelize) => {
     { sequelize: sequelize }
   );
 
-  await Guest.sync({ force: true });
+  await Guest.sync({ force: NEED_FORCE_SYNC });
+
+  if (!NEED_SEEDS) return;
+
+  const seed = new Array(100).fill(1).map(() => ({
+    name: faker.person.fullName(),
+    sex: faker.helpers.arrayElement(["male", "female"]),
+    phone: faker.string.numeric(11),
+    email: faker.internet.email(),
+  }));
+
+  seed.forEach(async (s) => await Guest.create(s));
 };
