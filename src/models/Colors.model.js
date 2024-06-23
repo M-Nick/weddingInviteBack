@@ -19,16 +19,11 @@ export const initColorModel = async (sequelize, Wedding) => {
       name: {
         type: DataTypes.STRING(31),
       },
-      wedding_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: Wedding,
-          key: "id",
-        },
-      },
     },
     { sequelize }
   );
+
+  Wedding.Color = Wedding.hasMany(Color);
 
   await Color.sync({ force: NEED_FORCE_SYNC });
 
@@ -37,7 +32,7 @@ export const initColorModel = async (sequelize, Wedding) => {
   const seed = new Array(100).fill(1).map(() => ({
     hex: faker.color.rgb(),
     name: faker.color.human(),
-    wedding_id: faker.number.int({ min: 1, max: 100 }),
+    WeddingId: faker.number.int({ min: 1, max: 100 }),
   }));
 
   seed.map(async (s) => await Color.create(s));

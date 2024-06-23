@@ -7,32 +7,16 @@ export const initGroupAnswerModel = async (sequelize, Group, Answer) => {
 
   GroupAnswer.init(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
       answer: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      group_id: {
-        type: DataTypes.UUID,
-        references: {
-          model: Group,
-          key: "id",
-        },
-      },
-      answer_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: Answer,
-          key: "id",
-        },
-      },
     },
     { sequelize }
   );
+
+  Group.Answer = Group.belongsToMany(Answer, { through: GroupAnswer });
+  Answer.Group = Answer.belongsToMany(Group, { through: GroupAnswer });
 
   await GroupAnswer.sync({ force: NEED_FORCE_SYNC });
 
@@ -42,8 +26,8 @@ export const initGroupAnswerModel = async (sequelize, Group, Answer) => {
 
   const seed = new Array(100).fill(1).map(() => ({
     answer: faker.datatype.boolean(),
-    group_id: faker.helpers.arrayElement(uuids.map(({ id }) => id)),
-    answer_id: faker.number.int({ min: 1, max: 100 }),
+    GroupId: faker.helpers.arrayElement(uuids.map(({ id }) => id)),
+    AnswerId: faker.number.int({ min: 1, max: 100 }),
   }));
 
   seed.forEach(async (s) => await GroupAnswer.create(s));

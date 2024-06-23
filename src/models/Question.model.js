@@ -16,16 +16,11 @@ export const initQuestionModel = async (sequelize, Wedding) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      wedding_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: Wedding,
-          key: "id",
-        },
-      },
     },
     { sequelize }
   );
+
+  Wedding.Question = Wedding.hasMany(Question);
 
   await Question.sync({ force: NEED_FORCE_SYNC });
 
@@ -33,7 +28,7 @@ export const initQuestionModel = async (sequelize, Wedding) => {
 
   const seed = new Array(100).fill(1).map(() => ({
     text: faker.lorem.words(7),
-    wedding_id: faker.number.int({ min: 1, max: 100 }),
+    WeddingId: faker.number.int({ min: 1, max: 100 }),
   }));
 
   seed.forEach(async (s) => await Question.create(s));

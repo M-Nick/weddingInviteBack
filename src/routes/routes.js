@@ -1,3 +1,4 @@
+import { initAdminRoute } from "./admin.route.js";
 import { initWeddingRoute } from "./weddings.route.js";
 
 export const initRoutes = async (app, models) => {
@@ -6,4 +7,5 @@ export const initRoutes = async (app, models) => {
   });
 
   await initWeddingRoute(app, models.Wedding);
+  await initAdminRoute(app, models);
 };

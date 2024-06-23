@@ -16,11 +16,11 @@ export const initLocationModel = async (sequelize) => {
         type: DataTypes.STRING(255),
         allowNull: false,
       },
-      map_link: {
+      mapLink: {
         type: DataTypes.STRING(1023),
         unique: true,
       },
-      image_name: {
+      imageName: {
         type: DataTypes.STRING(127),
         unique: true,
       },
@@ -37,8 +37,8 @@ export const initLocationModel = async (sequelize) => {
 
   const seed = new Array(100).fill(1).map(() => ({
     name: faker.location.state(),
-    map_link: faker.internet.url(),
-    image_name: faker.image.url(),
+    mapLink: faker.internet.url(),
+    imageName: faker.image.url(),
     address: faker.location.streetAddress(),
   }));
 
