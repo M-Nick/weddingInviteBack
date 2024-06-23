@@ -22,4 +22,6 @@ import { initSequelize } from "./db/init.js";
   app.listen(port, () => {
     console.log(`App running on port ${port}.`);
   });
+
+  testController(models.Wedding);
 })();
