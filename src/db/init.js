@@ -20,6 +20,6 @@ export const initSequelize = async () => {
     await initModels(sequelize);
     return sequelize;
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    throw new Error(error);
   }
 };

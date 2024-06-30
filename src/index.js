@@ -16,9 +16,9 @@ import { initSequelize } from "./db/init.js";
     })
   );
 
-  const sequelize = await initSequelize();
-
-  await initRoutes(app, sequelize.models);
+  await initSequelize()
+    .then((sequelize) => initRoutes(app, sequelize.models))
+    .catch((error) => console.error(error));
 
   app.listen(port, () => {
     console.log(`App running on port ${port}.`);
