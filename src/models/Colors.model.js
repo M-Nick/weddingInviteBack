@@ -29,10 +29,10 @@ export const initColorModel = async (sequelize, Wedding) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(12).fill(1).map((_, index) => ({
     hex: faker.color.rgb(),
     name: faker.color.human(),
-    WeddingId: faker.number.int({ min: 1, max: 100 }),
+    WeddingId: (index % 3) + 1,
   }));
 
   seed.map(async (s) => await Color.create(s));

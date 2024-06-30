@@ -24,7 +24,7 @@ export const initWeddingModel = async (sequelize) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(3).fill(1).map(() => ({
     date: faker.date.anytime(),
   }));
 

@@ -34,11 +34,11 @@ export const initEventModel = async (sequelize, Wedding, Location) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(12).fill(1).map((_, index) => ({
     time: faker.date.anytime(),
     name: faker.lorem.words(5),
     description: faker.lorem.words(10),
-    WeddingId: faker.number.int({ min: 1, max: 100 }),
+    WeddingId: (index % 3) + 1,
   }));
 
   seed.forEach(async (s) => await Event.create(s));

@@ -38,7 +38,7 @@ export const initGuestModel = async (sequelize) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(45).fill(1).map(() => ({
     name: faker.person.fullName(),
     sex: faker.helpers.arrayElement(["male", "female"]),
     phone: faker.string.numeric(11),

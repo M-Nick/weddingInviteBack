@@ -29,10 +29,10 @@ export const initGroupModel = async (sequelize, Wedding) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
-    WeddingId: faker.number.int({ min: 1, max: 100 }),
+  const seed = new Array(30).fill(1).map((_, index) => ({
+    WeddingId: (index % 3) + 1,
     isConfirm: faker.datatype.boolean(),
-    message: faker.lorem.words(20),
+    message: faker.lorem.words(faker.number.int({ min: 1, max: 20 })),
   }));
 
   seed.forEach(async (s) => await Group.create(s));

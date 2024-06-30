@@ -30,10 +30,10 @@ export const initGroupAnswerModel = async (sequelize, Group, Answer) => {
 
   const uuids = await sequelize.models.Group.findAll({ attributes: ["id"] });
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(75).fill(1).map((_, index) => ({
     answer: faker.datatype.boolean(),
     GroupId: faker.helpers.arrayElement(uuids.map(({ id }) => id)),
-    AnswerId: faker.number.int({ min: 1, max: 100 }),
+    AnswerId: index + 1,
   }));
 
   seed.forEach(async (s) => await GroupAnswer.create(s));

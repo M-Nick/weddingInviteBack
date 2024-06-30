@@ -22,9 +22,9 @@ export const initGroupGuestModel = async (sequelize, Group, Guest) => {
 
   const uuids = await sequelize.models.Group.findAll({ attributes: ["id"] });
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(45).fill(1).map((_, index) => ({
     GroupId: faker.helpers.arrayElement(uuids.map(({ id }) => id)),
-    GuestId: faker.number.int({ min: 1, max: 100 }),
+    GuestId: index + 1,
   }));
 
   seed.forEach(async (s) => await GroupGuest.create(s));

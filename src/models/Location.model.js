@@ -35,7 +35,7 @@ export const initLocationModel = async (sequelize) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(12).fill(1).map(() => ({
     name: faker.location.state(),
     mapLink: faker.internet.url(),
     imageName: faker.image.url(),

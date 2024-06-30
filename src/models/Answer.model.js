@@ -26,9 +26,9 @@ export const initAnswerModel = async (sequelize, Question) => {
 
   if (!NEED_SEEDS) return;
 
-  const seed = new Array(100).fill(1).map(() => ({
+  const seed = new Array(75).fill(1).map((_, index) => ({
     text: faker.lorem.word(),
-    QuestionId: faker.number.int({ min: 1, max: 100 }),
+    QuestionId: (index % 15) + 1,
   }));
 
   seed.forEach(async (s) => await Answer.create(s));
