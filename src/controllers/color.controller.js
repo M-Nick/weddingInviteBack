@@ -1,6 +1,8 @@
+import { faker } from "@faker-js/faker";
+
 export const initColorControllers = async (Color) => {
   const createColor = async (request, response) => {
-    const color = Color.build(request.body);
+    const color = Color.build({ hex: faker.color.rgb() });
     await color.save();
     response.json(color);
   };
