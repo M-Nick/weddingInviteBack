@@ -63,12 +63,15 @@ export const initAdminControllers = async (models) => {
 
     const timetable = await Event.findAll({
       where: { WeddingId },
-      attributes: ["id", "time", "name", "description"],
-      include: {
-        model: Location,
-        as: "location",
-        attributes: ["name", "mapLink", "address", ["imageName", "image"]],
-      },
+      attributes: [
+        "id",
+        "time",
+        "name",
+        "description",
+        "locationName",
+        "locationUrl",
+        "locationAddress",
+      ],
     });
 
     return response.json({

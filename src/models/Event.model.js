@@ -22,13 +22,20 @@ export const initEventModel = async (sequelize, Wedding, Location) => {
       description: {
         type: DataTypes.STRING(255),
       },
+      locationName: {
+        type: DataTypes.STRING(127),
+      },
+      locationUrl: {
+        type: DataTypes.STRING(511),
+      },
+      locationAddress: {
+        type: DataTypes.STRING(255),
+      },
     },
     { sequelize: sequelize }
   );
 
   Wedding.Event = Wedding.hasMany(Event, { as: "events" });
-  Location.Event = Location.hasMany(Event, { as: "events" });
-  Event.Location = Event.belongsTo(Location, { as: "location" });
 
   await Event.sync({ force: NEED_FORCE_SYNC });
 
@@ -39,6 +46,9 @@ export const initEventModel = async (sequelize, Wedding, Location) => {
     name: faker.lorem.words(5),
     description: faker.lorem.words(10),
     WeddingId: (index % 3) + 1,
+    locationName: faker.lorem.words(4),
+    locationUrl: faker.internet.url(),
+    locationAddress: faker.location.secondaryAddress(),
   }));
 
   seed.forEach(async (s) => await Event.create(s));
