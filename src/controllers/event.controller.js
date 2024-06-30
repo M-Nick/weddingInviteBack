@@ -1,9 +1,9 @@
 export const initEventControllers = async (Event) => {
   const createEvent = async (request, response) => {
-    console.log(request);
-
-    const event = Event.build({ date });
-    return await event.save();
+    console.log(JSON.stringify(request.body, null, 2));
+    const event = Event.build(request.body);
+    await event.save();
+    response.json(event);
   };
 
   const updateEvent = async (request, response) => {
@@ -17,9 +17,9 @@ export const initEventControllers = async (Event) => {
   };
 
   const deleteEvent = async (request, response) => {
-    console.log(request);
-    const event = await Event.findByPk(id);
-    return await event.destroy();
+    const event = await Event.findByPk(request.params.id);
+    await event.destroy();
+    response.json({ id: request.params.id });
   };
 
   const getEvent = async (request, response) => {

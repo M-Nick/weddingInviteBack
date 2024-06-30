@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { DataTypes, Model } from "sequelize";
 import { NEED_FORCE_SYNC, NEED_SEEDS } from "../configs/models.configs.js";
 
-export const initEventModel = async (sequelize, Wedding, Location) => {
+export const initEventModel = async (sequelize, Wedding) => {
   class Event extends Model {}
 
   Event.init(
