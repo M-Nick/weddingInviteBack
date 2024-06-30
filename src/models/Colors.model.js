@@ -16,9 +16,6 @@ export const initColorModel = async (sequelize, Wedding) => {
         type: DataTypes.STRING(8),
         allowNull: false,
       },
-      name: {
-        type: DataTypes.STRING(31),
-      },
     },
     { sequelize }
   );
@@ -31,7 +28,6 @@ export const initColorModel = async (sequelize, Wedding) => {
 
   const seed = new Array(12).fill(1).map((_, index) => ({
     hex: faker.color.rgb(),
-    name: faker.color.human(),
     WeddingId: (index % 3) + 1,
   }));
 

@@ -18,7 +18,7 @@ export const initAdminControllers = async (models) => {
     const WeddingId = request.params.id;
 
     const colors = await Color.findAll({
-      attributes: ["hex", "name", "id"],
+      attributes: ["hex", "id"],
       where: { WeddingId },
     });
 

@@ -1,6 +1,7 @@
 import { initWeddingRoute } from "./weddings.route.js";
 import { initAdminRoute } from "./admin/admin.route.js";
 import { initEventRoute } from "./admin/event.route.js";
+import { initColorRoute } from "./admin/color.route.js";
 
 export const initRoutes = async (app, models) => {
   app.get("/", (request, response) => {
@@ -15,5 +16,8 @@ export const initRoutes = async (app, models) => {
   );
   await initEventRoute(app, models.Event).then(() =>
     console.log("EventRoutes were initialized")
+  );
+  await initColorRoute(app, models.Color).then(() =>
+    console.log("ColorRoutes were initialized")
   );
 };

@@ -1,6 +1,5 @@
 export const initEventControllers = async (Event) => {
   const createEvent = async (request, response) => {
-    console.log(JSON.stringify(request.body, null, 2));
     const event = Event.build(request.body);
     await event.save();
     response.json(event);
