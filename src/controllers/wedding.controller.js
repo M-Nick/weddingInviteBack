@@ -1,19 +1,39 @@
 export const initWeddingControllers = async (Wedding) => {
   const createWedding = async (request, response) => {
-    const wedding = Wedding.build({ date });
-    return await wedding.save();
+    try {
+      const wedding = Wedding.build(request.body);
+      await wedding.save();
+      response.json(wedding);
+    } catch (e) {
+      response.error(e);
+    }
   };
 
   const updateWedding = async (request, response) => {
-    console.log({ id, date });
-    const wedding = await Wedding.findByPk(id);
-    wedding.update({ date });
-    wedding.save();
+    try {
+      const updatedField = Object.keys(request.body)[0];
+      const weddings = await Wedding.findByPk(request.params.id);
+      weddings
+        .update(request.body)
+        .then(() => weddings.save)
+        .then(() =>
+          response.json({ [updatedField]: weddings.get(updatedField) })
+        )
+        .catch((e) => response.send({ error: e }));
+    } catch (e) {
+      response.error(e);
+    }
   };
 
+  // TODO make wedding deleting delete all connected data!
   const deleteWedding = async (request, response) => {
-    const wedding = await Wedding.findByPk(id);
-    return await wedding.destroy();
+    try {
+      const weddings = await Wedding.findByPk(request.params.id);
+      await weddings.destroy();
+      response.json({ id: request.params.id });
+    } catch (e) {
+      response.error(e);
+    }
   };
 
   const getWedding = async (request, response) => {
