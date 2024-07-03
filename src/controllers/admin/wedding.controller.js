@@ -5,7 +5,7 @@ export const initWeddingControllers = async (Wedding) => {
       await wedding.save();
       response.json(wedding);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -21,7 +21,7 @@ export const initWeddingControllers = async (Wedding) => {
         )
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -32,7 +32,7 @@ export const initWeddingControllers = async (Wedding) => {
       await weddings.destroy();
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -47,7 +47,7 @@ export const initWeddingControllers = async (Wedding) => {
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

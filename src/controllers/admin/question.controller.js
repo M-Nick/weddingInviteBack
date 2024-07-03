@@ -9,7 +9,7 @@ export const initQuestionControllers = async (
       await question.save();
       response.json(question);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -25,7 +25,7 @@ export const initQuestionControllers = async (
         )
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -48,7 +48,7 @@ export const initQuestionControllers = async (
       await question.destroy();
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -63,7 +63,7 @@ export const initQuestionControllers = async (
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

@@ -1,4 +1,4 @@
-import { initWeddingRoute } from "./weddings.route.js";
+import { initWeddingRoute } from "./admin/weddings.route.js";
 import { initAdminRoute } from "./admin/admin.route.js";
 import { initEventRoute } from "./admin/event.route.js";
 import { initColorRoute } from "./admin/color.route.js";
@@ -6,6 +6,8 @@ import { initQuestionRoute } from "./admin/question.route.js";
 import { initAnswerRoute } from "./admin/answer.route.js";
 import { initGuestRoute } from "./admin/guest.route.js";
 import { initGroupRoute } from "./admin/group.route.js";
+import { initLandingRoute } from "./landing/landing.route.js";
+import { initGroupAnswerRoute } from "./landing/groupAnswer.route.js";
 
 export const initRoutes = async (app, models) => {
   app.get("/", (request, response) => {
@@ -42,4 +44,10 @@ export const initRoutes = async (app, models) => {
     models.Guest,
     models.GroupAnswer
   ).then(() => console.log("GroupRoutes were initialized"));
+  await initLandingRoute(app, models).then(() =>
+    console.log("GroupRoutes were initialized")
+  );
+  await initGroupAnswerRoute(app, models.GroupAnswer).then(() =>
+    console.log("GroupAnswerRoutes were initialized")
+  );
 };

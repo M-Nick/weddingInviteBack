@@ -6,7 +6,7 @@ export const initGuestControllers = async (Guest) => {
       await guest.save();
       response.json(guest);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -20,7 +20,7 @@ export const initGuestControllers = async (Guest) => {
         .then(() => response.json({ [updatedField]: guests.get(updatedField) }))
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -30,7 +30,7 @@ export const initGuestControllers = async (Guest) => {
       await guests.destroy();
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -45,7 +45,7 @@ export const initGuestControllers = async (Guest) => {
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

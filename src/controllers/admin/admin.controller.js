@@ -68,7 +68,7 @@ export const initAdminControllers = async (models) => {
         timetable: timetable,
       });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

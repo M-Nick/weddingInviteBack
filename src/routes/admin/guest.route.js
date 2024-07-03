@@ -1,4 +1,4 @@
-import { initGuestControllers } from "../../controllers/guest.controller.js";
+import { initGuestControllers } from "../../controllers/admin/guest.controller.js";
 
 export const initGuestRoute = async (app, GuestModel) => {
   const controllers = await initGuestControllers(GuestModel);

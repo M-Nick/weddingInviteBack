@@ -1,4 +1,4 @@
-import { initGroupControllers } from "../../controllers/group.controller.js";
+import { initGroupControllers } from "../../controllers/admin/group.controller.js";
 
 export const initGroupRoute = async (
   app,

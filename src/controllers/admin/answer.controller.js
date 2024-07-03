@@ -5,7 +5,7 @@ export const initAnswerControllers = async (Answer, GroupAnswer) => {
       await answer.save();
       response.json(answer);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -21,7 +21,7 @@ export const initAnswerControllers = async (Answer, GroupAnswer) => {
         )
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -36,7 +36,7 @@ export const initAnswerControllers = async (Answer, GroupAnswer) => {
       });
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -51,7 +51,7 @@ export const initAnswerControllers = async (Answer, GroupAnswer) => {
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

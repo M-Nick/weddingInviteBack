@@ -23,6 +23,7 @@ export const initGroupAnswerModel = async (sequelize, Group, Answer) => {
     through: GroupAnswer,
     as: "groups",
   });
+  Answer.GroupAnswer = Answer.hasMany(GroupAnswer, { as: "answers" });
 
   await GroupAnswer.sync({ force: NEED_FORCE_SYNC });
 

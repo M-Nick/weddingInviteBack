@@ -6,7 +6,7 @@ export const initGroupControllers = async (Group, Guest, GroupAnswer) => {
       await group.save();
       response.json(group);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -20,7 +20,7 @@ export const initGroupControllers = async (Group, Guest, GroupAnswer) => {
         .then(() => response.json({ [updatedField]: groups.get(updatedField) }))
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -35,7 +35,7 @@ export const initGroupControllers = async (Group, Guest, GroupAnswer) => {
 
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -50,7 +50,7 @@ export const initGroupControllers = async (Group, Guest, GroupAnswer) => {
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

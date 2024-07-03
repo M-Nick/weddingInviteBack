@@ -1,4 +1,4 @@
-import { initQuestionControllers } from "../../controllers/question.controller.js";
+import { initQuestionControllers } from "../../controllers/admin/question.controller.js";
 
 export const initQuestionRoute = async (
   app,

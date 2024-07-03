@@ -5,7 +5,7 @@ export const initEventControllers = async (Event) => {
       await event.save();
       response.json(event);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -19,7 +19,7 @@ export const initEventControllers = async (Event) => {
         .then(() => response.json({ [updatedField]: event.get(updatedField) }))
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -29,7 +29,7 @@ export const initEventControllers = async (Event) => {
       await event.destroy();
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -44,7 +44,7 @@ export const initEventControllers = async (Event) => {
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

@@ -7,7 +7,7 @@ export const initColorControllers = async (Color) => {
       await color.save();
       response.json(color);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -21,7 +21,7 @@ export const initColorControllers = async (Color) => {
         .then(() => response.json({ [updatedField]: color.get(updatedField) }))
         .catch((e) => response.send({ error: e }));
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -31,7 +31,7 @@ export const initColorControllers = async (Color) => {
       await color.destroy();
       response.json({ id: request.params.id });
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 
@@ -46,7 +46,7 @@ export const initColorControllers = async (Color) => {
       );
       response.json(result);
     } catch (e) {
-      response.error(e);
+      response.send({ error: e });
     }
   };
 

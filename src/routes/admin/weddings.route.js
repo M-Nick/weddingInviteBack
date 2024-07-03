@@ -1,4 +1,4 @@
-import { initWeddingControllers } from "../controllers/wedding.controller.js";
+import { initWeddingControllers } from "../../controllers/admin/wedding.controller.js";
 
 export const initWeddingRoute = async (app, WeddingModel) => {
   const controllers = await initWeddingControllers(WeddingModel);
