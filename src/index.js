@@ -3,6 +3,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import { initRoutes } from "./routes/routes.js";
 import { initSequelize } from "./db/init.js";
+import "dotenv/config";
 
 (async () => {
   const app = express();

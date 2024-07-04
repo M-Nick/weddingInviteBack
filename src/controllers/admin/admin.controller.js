@@ -12,7 +12,7 @@ export const initAdminControllers = async (models) => {
 
       const dbGroups = await Group.findAll({
         where: { WeddingId },
-        attributes: ["id", "isConfirm", "message"],
+        attributes: ["id", "isConfirm"],
         include: [
           {
             model: Guest,
@@ -30,7 +30,7 @@ export const initAdminControllers = async (models) => {
 
       const groups = dbGroups.map((group) => ({
         id: group.id,
-        message: group.message,
+        isConfirm: group.isConfirm,
         guests: group.guests,
         answers: group.answers.map((answer) => ({
           id: answer.id,
