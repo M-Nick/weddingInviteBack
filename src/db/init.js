@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize").Sequelize;
 const initModels = require("../models/index.js").initModels;
+const pg = require("pg");
 
 const {
   DATABASE,
@@ -39,6 +40,7 @@ exports.initSequelize = async () => {
     host: DB_HOST,
     port: DB_PORT,
     dialect: DB_DIALECT,
+    dialectModule: pg,
     ...getSsl(Boolean(DB_SSL)),
   });
   try {
