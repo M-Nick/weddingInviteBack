@@ -5,7 +5,6 @@
   "main": "src/index.js",
   "type": "commonjs",
   "scripts": {
-    "build": "webpack",
     "build-run-docker-postgres": "node --env-file=.env.docker-postgres ./build/index.js",
     "start": "nodemon",
     "start-docker-postgres": "nodemon --env-file=.env.docker-postgres",
