@@ -1,6 +1,7 @@
-import { initQuestionControllers } from "../../controllers/admin/question.controller.js";
+const initQuestionControllers =
+  require("../../controllers/admin/question.controller.js").initQuestionControllers;
 
-export const initQuestionRoute = async (
+exports.initQuestionRoute = async (
   app,
   QuestionModel,
   AnswerModel,

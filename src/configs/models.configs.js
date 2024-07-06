@@ -1,2 +1,2 @@
-export const NEED_FORCE_SYNC = false;
-export const NEED_SEEDS = false;
+exports.NEED_FORCE_SYNC = false;
+exports.NEED_SEEDS = false;

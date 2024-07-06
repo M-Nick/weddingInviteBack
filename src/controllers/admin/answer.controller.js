@@ -1,4 +1,4 @@
-export const initAnswerControllers = async (Answer, GroupAnswer) => {
+exports.initAnswerControllers = async (Answer, GroupAnswer) => {
   const createAnswer = async (request, response) => {
     try {
       const answer = Answer.build({ text: "", QuestionId: request.params.id });

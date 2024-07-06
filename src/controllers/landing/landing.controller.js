@@ -1,4 +1,4 @@
-export const initLandingControllers = async (models) => {
+exports.initLandingControllers = async (models) => {
   const { GroupAnswer, Wedding, Group, Guest, Color, Event, Question, Answer } =
     models;
 

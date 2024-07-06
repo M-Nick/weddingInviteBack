@@ -1,15 +1,17 @@
-import { initWeddingRoute } from "./admin/weddings.route.js";
-import { initAdminRoute } from "./admin/admin.route.js";
-import { initEventRoute } from "./admin/event.route.js";
-import { initColorRoute } from "./admin/color.route.js";
-import { initQuestionRoute } from "./admin/question.route.js";
-import { initAnswerRoute } from "./admin/answer.route.js";
-import { initGuestRoute } from "./admin/guest.route.js";
-import { initGroupRoute } from "./admin/group.route.js";
-import { initLandingRoute } from "./landing/landing.route.js";
-import { initGroupAnswerRoute } from "./landing/groupAnswer.route.js";
+const initWeddingRoute = require("./admin/weddings.route.js").initWeddingRoute;
+const initAdminRoute = require("./admin/admin.route.js").initAdminRoute;
+const initEventRoute = require("./admin/event.route.js").initEventRoute;
+const initColorRoute = require("./admin/color.route.js").initColorRoute;
+const initQuestionRoute =
+  require("./admin/question.route.js").initQuestionRoute;
+const initAnswerRoute = require("./admin/answer.route.js").initAnswerRoute;
+const initGuestRoute = require("./admin/guest.route.js").initGuestRoute;
+const initGroupRoute = require("./admin/group.route.js").initGroupRoute;
+const initLandingRoute = require("./landing/landing.route.js").initLandingRoute;
+const initGroupAnswerRoute =
+  require("./landing/groupAnswer.route.js").initGroupAnswerRoute;
 
-export const initRoutes = async (app, models) => {
+exports.initRoutes = async (app, models) => {
   app.get("/", (request, response) => {
     response.json({ info: "Node.js, Express, and Postgres API" });
   });

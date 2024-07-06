@@ -1,4 +1,4 @@
-export const initEventControllers = async (Event) => {
+exports.initEventControllers = async (Event) => {
   const createEvent = async (request, response) => {
     try {
       const event = Event.build(request.body);

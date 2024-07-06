@@ -1,6 +1,7 @@
-import { initWeddingControllers } from "../../controllers/admin/wedding.controller.js";
+const initWeddingControllers =
+  require("../../controllers/admin/wedding.controller.js").initWeddingControllers;
 
-export const initWeddingRoute = async (app, WeddingModel) => {
+exports.initWeddingRoute = async (app, WeddingModel) => {
   const controllers = await initWeddingControllers(WeddingModel);
 
   app.get("/weddings", controllers.getAllWeddings);

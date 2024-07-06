@@ -1,6 +1,7 @@
-import { initAnswerControllers } from "../../controllers/admin/answer.controller.js";
+const initAnswerControllers =
+  require("../../controllers/admin/answer.controller.js").initAnswerControllers;
 
-export const initAnswerRoute = async (app, AnswerModel, GroupAnswerModel) => {
+exports.initAnswerRoute = async (app, AnswerModel, GroupAnswerModel) => {
   const controllers = await initAnswerControllers(
     AnswerModel,
     GroupAnswerModel

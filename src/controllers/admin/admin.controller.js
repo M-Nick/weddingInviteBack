@@ -1,4 +1,4 @@
-export const initAdminControllers = async (models) => {
+exports.initAdminControllers = async (models) => {
   const { Guest, Group, Color, Event, Question, Answer } = models;
 
   const getAllData = async (request, response) => {

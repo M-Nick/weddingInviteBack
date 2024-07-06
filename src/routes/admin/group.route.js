@@ -1,6 +1,7 @@
-import { initGroupControllers } from "../../controllers/admin/group.controller.js";
+const initGroupControllers =
+  require("../../controllers/admin/group.controller.js").initGroupControllers;
 
-export const initGroupRoute = async (
+exports.initGroupRoute = async (
   app,
   GroupModel,
   GuestModel,

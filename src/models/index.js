@@ -1,13 +1,14 @@
-import { initAnswerModel } from "./Answer.model.js";
-import { initColorModel } from "./Colors.model.js";
-import { initEventModel } from "./Event.model.js";
-import { initGroupModel } from "./Group.model.js";
-import { initGroupAnswerModel } from "./GroupAnswer.model.js";
-import { initGuestModel } from "./Guest.model.js";
-import { initQuestionModel } from "./Question.model.js";
-import { initWeddingModel } from "./Wedding.model.js";
+const initAnswerModel = require("./Answer.model.js").initAnswerModel;
+const initColorModel = require("./Colors.model.js").initColorModel;
+const initEventModel = require("./Event.model.js").initEventModel;
+const initGroupModel = require("./Group.model.js").initGroupModel;
+const initGroupAnswerModel =
+  require("./GroupAnswer.model.js").initGroupAnswerModel;
+const initGuestModel = require("./Guest.model.js").initGuestModel;
+const initQuestionModel = require("./Question.model.js").initQuestionModel;
+const initWeddingModel = require("./Wedding.model.js").initWeddingModel;
 
-export const initModels = async (sequelize) => {
+exports.initModels = async (sequelize) => {
   await initWeddingModel(sequelize);
   await initColorModel(sequelize, sequelize.models.Wedding);
   await initGroupModel(sequelize, sequelize.models.Wedding);
