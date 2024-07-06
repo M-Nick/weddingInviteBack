@@ -1,6 +1,6 @@
-import { faker } from "@faker-js/faker";
+const faker = require("@faker-js/faker").faker;
 
-export const initColorControllers = async (Color) => {
+exports.initColorControllers = async (Color) => {
   const createColor = async (request, response) => {
     try {
       const color = Color.build({ ...request.body, hex: faker.color.rgb() });

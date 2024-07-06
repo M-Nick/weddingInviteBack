@@ -1,6 +1,7 @@
-import { initLandingControllers } from "../../controllers/landing/landing.controller.js";
+const initLandingControllers =
+  require("../../controllers/landing/landing.controller.js").initLandingControllers;
 
-export const initLandingRoute = async (app, models) => {
+exports.initLandingRoute = async (app, models) => {
   const { getAllData } = await initLandingControllers(models);
 
   app.get("/landing-data/:id", getAllData);

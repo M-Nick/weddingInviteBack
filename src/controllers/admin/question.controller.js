@@ -1,8 +1,4 @@
-export const initQuestionControllers = async (
-  Question,
-  Answer,
-  GroupAnswer
-) => {
+exports.initQuestionControllers = async (Question, Answer, GroupAnswer) => {
   const createQuestion = async (request, response) => {
     try {
       const question = Question.build({ text: "", ...request.body });

@@ -1,6 +1,7 @@
-import { initAdminControllers } from "../../controllers/admin/admin.controller.js";
+const initAdminControllers =
+  require("../../controllers/admin/admin.controller.js").initAdminControllers;
 
-export const initAdminRoute = async (app, models) => {
+exports.initAdminRoute = async (app, models) => {
   const { getAllData } = await initAdminControllers(models);
 
   app.get("/weddings/:id/settings", getAllData);

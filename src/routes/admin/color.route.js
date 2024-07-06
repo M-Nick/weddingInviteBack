@@ -1,6 +1,7 @@
-import { initColorControllers } from "../../controllers/admin/color.controller.js";
+const initColorControllers =
+  require("../../controllers/admin/color.controller.js").initColorControllers;
 
-export const initColorRoute = async (app, ColorModel) => {
+exports.initColorRoute = async (app, ColorModel) => {
   const controllers = await initColorControllers(ColorModel);
 
   app.get("/colors", controllers.getAllColors);

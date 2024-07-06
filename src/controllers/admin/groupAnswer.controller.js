@@ -1,6 +1,6 @@
-import { Op } from "sequelize";
+const Op = require("sequelize").Op;
 
-export const initGroupAnswerControllers = async (GroupAnswer) => {
+exports.initGroupAnswerControllers = async (GroupAnswer) => {
   const setGroupAnswer = async (request, response) => {
     try {
       await GroupAnswer.findOrCreate({

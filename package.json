@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "nodemon --env-file=.env.docker-postgres",
+    "start": "nodemon",
+    "start-docker-postgres": "nodemon --env-file=.env.docker-postgres",
     "start-neon": "nodemon --env-file=.env.neon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

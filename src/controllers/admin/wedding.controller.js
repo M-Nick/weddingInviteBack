@@ -1,4 +1,4 @@
-export const initWeddingControllers = async (Wedding) => {
+exports.initWeddingControllers = async (Wedding) => {
   const createWedding = async (request, response) => {
     try {
       const wedding = Wedding.build(request.body);

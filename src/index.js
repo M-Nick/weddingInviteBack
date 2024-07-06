@@ -1,9 +1,9 @@
-import cors from "cors";
-import express from "express";
-import bodyParser from "body-parser";
-import { initRoutes } from "./routes/routes.js";
-import { initSequelize } from "./db/init.js";
-import "dotenv/config";
+const cors = require("cors");
+const express = require("express");
+const bodyParser = require("body-parser");
+const initRoutes = require("./routes/routes.js").initRoutes;
+const initSequelize = require("./db/init.js").initSequelize;
+require("dotenv/config");
 
 (async () => {
   const app = express();

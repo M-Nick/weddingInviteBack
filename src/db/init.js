@@ -1,6 +1,5 @@
-import { Sequelize } from "sequelize";
-
-import { initModels } from "../models/index.js";
+const Sequelize = require("sequelize").Sequelize;
+const initModels = require("../models/index.js").initModels;
 
 const {
   DATABASE,
@@ -22,17 +21,25 @@ console.log({
   DB_SSL,
 });
 
-export const initSequelize = async () => {
+const getSsl = (needSsl) => {
+  return needSsl
+    ? {
+        ssl: true,
+        dialectOptions: {
+          ssl: {
+            require: true,
+          },
+        },
+      }
+    : {};
+};
+
+exports.initSequelize = async () => {
   const sequelize = new Sequelize(DATABASE, DB_USERNAME, DB_PASSWORD, {
     host: DB_HOST,
     port: DB_PORT,
     dialect: DB_DIALECT,
-    ssl: Boolean(DB_SSL),
-    dialectOptions: {
-      ssl: {
-        require: Boolean(DB_SSL),
-      },
-    },
+    ...getSsl(Boolean(DB_SSL)),
   });
   try {
     await sequelize.authenticate();

@@ -1,4 +1,4 @@
-export const initGuestControllers = async (Guest) => {
+exports.initGuestControllers = async (Guest) => {
   const createGuest = async (request, response) => {
     try {
       const groupId = request.params.id;

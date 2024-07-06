@@ -1,6 +1,7 @@
-import { initEventControllers } from "../../controllers/admin/event.controller.js";
+const initEventControllers =
+  require("../../controllers/admin/event.controller.js").initEventControllers;
 
-export const initEventRoute = async (app, EventModel) => {
+exports.initEventRoute = async (app, EventModel) => {
   const controllers = await initEventControllers(EventModel);
 
   app.get("/events", controllers.getAllEvents);

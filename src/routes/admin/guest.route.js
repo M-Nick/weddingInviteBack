@@ -1,6 +1,7 @@
-import { initGuestControllers } from "../../controllers/admin/guest.controller.js";
+const initGuestControllers =
+  require("../../controllers/admin/guest.controller.js").initGuestControllers;
 
-export const initGuestRoute = async (app, GuestModel) => {
+exports.initGuestRoute = async (app, GuestModel) => {
   const controllers = await initGuestControllers(GuestModel);
 
   app.get("/groups/:id/guests", controllers.getAllGuests);
