@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const { NODE_ENV = "production" } = process.env;
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
   mode: NODE_ENV,
   target: "node",
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "public"),
     filename: "index.js",
   },
   resolve: {
@@ -15,4 +16,5 @@ module.exports = {
   optimization: {
     minimize: false,
   },
+  plugins: [new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ })],
 };
