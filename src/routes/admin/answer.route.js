@@ -7,9 +7,9 @@ exports.initAnswerRoute = async (app, AnswerModel, GroupAnswerModel) => {
     GroupAnswerModel
   );
 
-  app.get("/questions/:id/answers", controllers.getAllAnswers);
-  app.get("/answers/:id", controllers.getAnswer);
-  app.post("/questions/:id/answers", controllers.createAnswer);
-  app.put("/answers/:id", controllers.updateAnswer);
-  app.delete("/answers/:id", controllers.deleteAnswer);
+  app.get("/api/questions/:id/answers", controllers.getAllAnswers);
+  app.get("/api/answers/:id", controllers.getAnswer);
+  app.post("/api/questions/:id/answers", controllers.createAnswer);
+  app.put("/api/answers/:id", controllers.updateAnswer);
+  app.delete("/api/answers/:id", controllers.deleteAnswer);
 };

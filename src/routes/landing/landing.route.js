@@ -4,5 +4,5 @@ const initLandingControllers =
 exports.initLandingRoute = async (app, models) => {
   const { getAllData } = await initLandingControllers(models);
 
-  app.get("/landing-data/:id", getAllData);
+  app.get("/api/landing-data/:id", getAllData);
 };
