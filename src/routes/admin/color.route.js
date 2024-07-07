@@ -4,9 +4,9 @@ const initColorControllers =
 exports.initColorRoute = async (app, ColorModel) => {
   const controllers = await initColorControllers(ColorModel);
 
-  app.get("/api/colors", controllers.getAllColors);
-  app.get("/api/colors/:id", controllers.getColor);
-  app.post("/api/colors", controllers.createColor);
-  app.put("/api/colors/:id", controllers.updateColor);
-  app.delete("/api/colors/:id", controllers.deleteColor);
+  app.get("/colors", controllers.getAllColors);
+  app.get("/colors/:id", controllers.getColor);
+  app.post("/colors", controllers.createColor);
+  app.put("/colors/:id", controllers.updateColor);
+  app.delete("/colors/:id", controllers.deleteColor);
 };

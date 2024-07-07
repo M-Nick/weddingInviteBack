@@ -12,12 +12,8 @@ const initGroupAnswerRoute =
   require("./landing/groupAnswer.route.js").initGroupAnswerRoute;
 
 exports.initRoutes = async (app, models) => {
-  app.get("/api/", (request, response) => {
-    response.json({ info: "Node.js, Express, and Postgres API on /api/" });
-  });
-
   app.get("/", (request, response) => {
-    response.json({ info: "Node.js, Express, and Postgres API on /" });
+    response.json({ info: "Node.js, Express, and Postgres API" });
   });
 
   await initWeddingRoute(app, models.Wedding).then(() =>

@@ -13,9 +13,9 @@ exports.initGroupRoute = async (
     GroupAnswerModel
   );
 
-  app.get("/api/weddings/:id/groups", controllers.getAllGroups);
-  app.get("/api/groups/:id", controllers.getGroup);
-  app.post("/api/weddings/:id/groups", controllers.createGroup);
-  app.put("/api/groups/:id", controllers.updateGroup);
-  app.delete("/api/groups/:id", controllers.deleteGroup);
+  app.get("/weddings/:id/groups", controllers.getAllGroups);
+  app.get("/groups/:id", controllers.getGroup);
+  app.post("/weddings/:id/groups", controllers.createGroup);
+  app.put("/groups/:id", controllers.updateGroup);
+  app.delete("/groups/:id", controllers.deleteGroup);
 };
