@@ -4,5 +4,5 @@ const initAdminControllers =
 exports.initAdminRoute = async (app, models) => {
   const { getAllData } = await initAdminControllers(models);
 
-  app.get("/weddings/:id/settings", getAllData);
+  app.get("/api/weddings/:id/settings", getAllData);
 };
