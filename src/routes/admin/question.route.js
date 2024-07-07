@@ -13,9 +13,9 @@ exports.initQuestionRoute = async (
     GroupAnswer
   );
 
-  app.get("/api/questions", controllers.getAllQuestions);
-  app.get("/api/questions/:id", controllers.getQuestion);
-  app.post("/api/questions", controllers.createQuestion);
-  app.put("/api/questions/:id", controllers.updateQuestion);
-  app.delete("/api/questions/:id", controllers.deleteQuestion);
+  app.get("/questions", controllers.getAllQuestions);
+  app.get("/questions/:id", controllers.getQuestion);
+  app.post("/questions", controllers.createQuestion);
+  app.put("/questions/:id", controllers.updateQuestion);
+  app.delete("/questions/:id", controllers.deleteQuestion);
 };

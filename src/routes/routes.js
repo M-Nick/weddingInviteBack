@@ -12,10 +12,10 @@ const initGroupAnswerRoute =
   require("./landing/groupAnswer.route.js").initGroupAnswerRoute;
 
 exports.initRoutes = async (app, models) => {
-  app.get("/api/", (request, response) => {
+  app.get("/", (request, response) => {
     response.json({ info: "Node.js, Express, and Postgres API /" });
   });
-  app.get("/api/api", (request, response) => {
+  app.get("/api", (request, response) => {
     response.json({ info: "Node.js, Express, and Postgres API /api" });
   });
 
