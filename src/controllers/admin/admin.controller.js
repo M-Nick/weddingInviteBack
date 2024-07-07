@@ -8,6 +8,7 @@ exports.initAdminControllers = async (models) => {
       const colors = await Color.findAll({
         attributes: ["hex", "id"],
         where: { WeddingId },
+        order: [["id", "ASC"]],
       });
 
       const dbGroups = await Group.findAll({
@@ -25,6 +26,10 @@ exports.initAdminControllers = async (models) => {
             attributes: ["id"],
             through: { attributes: ["answer"] },
           },
+        ],
+        order: [
+          ["id", "ASC"],
+          [{ model: Guest, as: "guests" }, "id", "ASC"],
         ],
       });
 
@@ -46,6 +51,10 @@ exports.initAdminControllers = async (models) => {
           as: "answers",
           attributes: ["id", "text"],
         },
+        order: [
+          ["id", "ASC"],
+          [{ model: Answer, as: "answers" }, "id", "ASC"],
+        ],
       });
 
       const timetable = await Event.findAll({
@@ -59,6 +68,7 @@ exports.initAdminControllers = async (models) => {
           "locationUrl",
           "locationAddress",
         ],
+        order: [["time", "ASC"]],
       });
 
       return response.json({

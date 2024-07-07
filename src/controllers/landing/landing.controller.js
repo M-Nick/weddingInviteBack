@@ -18,7 +18,10 @@ exports.initLandingControllers = async (models) => {
         id: group.id,
         message: group.message,
         isConfirm: group.isConfirm,
-        guests: await Guest.findAll({ where: { GroupId } }),
+        guests: await Guest.findAll({
+          where: { GroupId },
+          order: [["id", "ASC"]],
+        }),
       };
 
       let questions = await Question.findAll({
@@ -34,6 +37,10 @@ exports.initLandingControllers = async (models) => {
             attributes: ["answer", "GroupId"],
           },
         },
+        order: [
+          ["id", "ASC"],
+          [{ model: Answer, as: "answers" }, "id", "ASC"],
+        ],
       });
 
       const timetable = await Event.findAll({
@@ -47,6 +54,7 @@ exports.initLandingControllers = async (models) => {
           "locationUrl",
           "locationAddress",
         ],
+        order: [["time", "ASC"]],
       });
 
       return response.json({
