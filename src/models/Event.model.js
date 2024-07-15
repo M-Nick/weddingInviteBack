@@ -1,8 +1,12 @@
+const {
+  NEED_ALTER_SYNC,
+  NEED_FORCE_SYNC,
+  NEED_SEEDS,
+} = require("../configs/models.configs.js");
+
 const faker = require("@faker-js/faker").faker;
 const DataTypes = require("sequelize").DataTypes;
 const Model = require("sequelize").Model;
-const NEED_FORCE_SYNC = require("../configs/models.configs.js").NEED_FORCE_SYNC;
-const NEED_SEEDS = require("../configs/models.configs.js").NEED_SEEDS;
 
 exports.initEventModel = async (sequelize, Wedding) => {
   class Event extends Model {}
@@ -39,7 +43,7 @@ exports.initEventModel = async (sequelize, Wedding) => {
 
   Wedding.Event = Wedding.hasMany(Event, { as: "events" });
 
-  await Event.sync({ force: NEED_FORCE_SYNC });
+  await Event.sync({ force: NEED_FORCE_SYNC, alter: NEED_ALTER_SYNC });
 
   if (!NEED_SEEDS) return;
 

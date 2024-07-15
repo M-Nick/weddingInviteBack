@@ -1,7 +1,9 @@
 exports.initWeddingControllers = async (Wedding) => {
   const createWedding = async (request, response) => {
     try {
-      const wedding = Wedding.build(request.body);
+      const authorIp =
+        request.headers["x-forwarded-for"] || request.socket.remoteAddress;
+      const wedding = Wedding.build({ ...request.body, authorIp });
       await wedding.save();
       response.json(wedding);
     } catch (e) {

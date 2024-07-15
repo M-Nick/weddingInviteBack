@@ -1,8 +1,12 @@
+const {
+  NEED_ALTER_SYNC,
+  NEED_FORCE_SYNC,
+  NEED_SEEDS,
+} = require("../configs/models.configs.js");
+
 const faker = require("@faker-js/faker").faker;
 const DataTypes = require("sequelize").DataTypes;
 const Model = require("sequelize").Model;
-const NEED_FORCE_SYNC = require("../configs/models.configs.js").NEED_FORCE_SYNC;
-const NEED_SEEDS = require("../configs/models.configs.js").NEED_SEEDS;
 
 exports.initGroupAnswerModel = async (sequelize, Group, Answer) => {
   class GroupAnswer extends Model {}
@@ -27,7 +31,7 @@ exports.initGroupAnswerModel = async (sequelize, Group, Answer) => {
   });
   Answer.GroupAnswer = Answer.hasMany(GroupAnswer, { as: "answers" });
 
-  await GroupAnswer.sync({ force: NEED_FORCE_SYNC });
+  await GroupAnswer.sync({ force: NEED_FORCE_SYNC, alter: NEED_ALTER_SYNC });
 
   if (!NEED_SEEDS) return;
 
