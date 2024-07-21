@@ -6,7 +6,7 @@ exports.initEventRoute = async (app, EventModel) => {
 
   app.get("/api/events", controllers.getAllEvents);
   app.get("/api/events/:id", controllers.getEvent);
-  app.post("/api/events", controllers.createEvent);
-  app.put("/api/events/:id", controllers.updateEvent);
-  app.delete("/api/events/:id", controllers.deleteEvent);
+  // app.post("/api/events", controllers.createEvent);
+  // app.put("/api/events/:id", controllers.updateEvent);
+  // app.delete("/api/events/:id", controllers.deleteEvent);
 };
